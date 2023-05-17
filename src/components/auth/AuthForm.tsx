@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { FC, useCallback, useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { BsGithub, BsGoogle } from 'react-icons/bs';
+import { BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
 
 import AuthSocialButton from '@/components/auth/AuthSocialButton';
 import Button from '@/components/inputs/Button';
@@ -78,7 +78,6 @@ const AuthForm: FC = () => {
         redirect: false,
       })
         .then((callback) => {
-          console.log('callback ', callback);
           if (callback?.error) {
             toast.error('Invalid credentials!');
           }
@@ -162,6 +161,10 @@ const AuthForm: FC = () => {
             <AuthSocialButton
               icon={BsGithub}
               onClick={() => socialAction('github')}
+            />
+            <AuthSocialButton
+              icon={BsFacebook}
+              onClick={() => socialAction('facebook')}
             />
             {/* <AuthSocialButton
               icon={BsGoogle}

@@ -1,9 +1,21 @@
+'use client';
+
+import clsx from 'clsx';
 import { FC } from 'react';
 
-type Props = {};
+import EmptyState from '@/components/EmptyState';
+import { useConversation } from '@/hooks';
 
-const Conversations: FC = (props: Props) => {
-  return <div>Conversations</div>;
+const Conversations: FC = () => {
+  const { isOpen } = useConversation();
+
+  return (
+    <div
+      className={clsx('lg:pl-80 h-full lg:block', isOpen ? 'block' : 'hidden')}
+    >
+      <EmptyState />
+    </div>
+  );
 };
 
 export default Conversations;

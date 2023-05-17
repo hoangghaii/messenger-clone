@@ -1,3 +1,10 @@
+**NOTE**:
+
+- This is a work in progress. It is not ready for use.
+- Use `npm` instead of `yarn` or `pnpm` for now.
+- This project is based on [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/).
+- References source: [Youtube](https://www.youtube.com/watch?v=PGPGcKBpAk8&t=157s&ab_channel=CodeWithAntonio) (from _4:26:06_)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import EmptyState from '@/components/EmptyState';
 
-const Users: FC = () => {
+const UsersPage: FC = () => {
   return (
     <div className="hidden lg:block lg:pl-80 h-full">
       <EmptyState />
@@ -10,4 +10,4 @@ const Users: FC = () => {
   );
 };
 
-export default Users;
+export default UsersPage;
