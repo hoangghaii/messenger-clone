@@ -8,6 +8,19 @@ import GoogleProvider from 'next-auth/providers/google';
 
 import prisma from '@/libs/prismadb';
 
+/* 
+Here is the explanation for the code above:
+1. We use the Prisma adapter to connect NextAuth.js to the database. The Prisma adapter is a community-maintained adapter that is not officially supported by NextAuth.js, but it works well and is easy to use.
+2. We configure the providers that we want to use. In this case, we use the following providers:
+    GitHubProvider: This provider allows users to sign in with their GitHub account.
+    FacebookProvider: This provider allows users to sign in with their Facebook account.
+    GoogleProvider: This provider allows users to sign in with their Google account.
+    CredentialsProvider: This provider allows users to sign in with an email and a password.
+3. We set the debug property to true to enable debug mode. In debug mode, you can see the session data and the database queries in the console.
+4. We configure the session property. The strategy property represents the type of session that we want to use. In this case, we use JSON Web Token (JWT) sessions. The JWT session is the most secure session type, so it is recommended for production.
+5. We set the secret property to a secret string. This secret string is used to sign and verify the JWT tokens. It should be a random string that is long and complex. 
+*/
+
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
