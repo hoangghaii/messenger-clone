@@ -1,7 +1,6 @@
 import { getConversations, getUsers } from '@/actions';
+import ConversationList from '@/app/conversations/components/ConversationList';
 import Sidebar from '@/components/sidebar/Sidebar';
-
-import ConversationList from './components/ConversationList';
 
 type Props = {
   children: React.ReactNode;

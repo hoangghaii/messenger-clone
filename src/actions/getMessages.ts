@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-import { prisma } from '@/libs';
+import prisma from '@/libs/prismadb';
 
 export const getMessages = cache(async (conversationId: string) => {
   try {

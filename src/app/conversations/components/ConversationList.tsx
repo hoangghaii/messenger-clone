@@ -8,12 +8,11 @@ import { useRouter } from 'next/navigation';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { MdOutlineGroupAdd } from 'react-icons/md';
 
+import ConversationBox from '@/app/conversations/components/ConversationBox';
 import GroupChatModal from '@/components/modals/GroupChatModal';
 import { useConversation } from '@/hooks';
-import { pusherClient } from '@/libs';
+import { pusherClient } from '@/libs/pusher';
 import { FullConversationType } from '@/types';
-
-import ConversationBox from './ConversationBox';
 
 type Props = {
   initialItems: FullConversationType[];
@@ -39,7 +38,7 @@ const ConversationList: FC<Props> = ({ initialItems, users, title }: Props) => {
       return;
     }
 
-    // pusherClient.subscribe(pusherKey);
+    const channel = pusherClient.subscribe(pusherKey);
 
     const updateHandler = (conversation: FullConversationType) => {
       setItems((current) =>
@@ -64,6 +63,10 @@ const ConversationList: FC<Props> = ({ initialItems, users, title }: Props) => {
 
         return [conversation, ...current];
       });
+
+      if (conversationId === conversation.id) {
+        router.push(`/conversations`);
+      }
     };
 
     const removeHandler = (conversation: FullConversationType) => {
@@ -72,10 +75,17 @@ const ConversationList: FC<Props> = ({ initialItems, users, title }: Props) => {
       });
     };
 
-    // pusherClient.bind('conversation:update', updateHandler);
-    // pusherClient.bind('conversation:new', newHandler);
-    // pusherClient.bind('conversation:remove', removeHandler);
-  }, [pusherKey, router]);
+    channel.bind('conversation:update', updateHandler);
+    channel.bind('conversation:new', newHandler);
+    channel.bind('conversation:remove', removeHandler);
+
+    return () => {
+      pusherClient.unsubscribe(pusherKey);
+      channel.unbind('conversation:update', updateHandler);
+      channel.unbind('conversation:new', newHandler);
+      channel.unbind('conversation:remove', removeHandler);
+    };
+  }, [pusherKey, conversationId, router]);
 
   return (
     <>

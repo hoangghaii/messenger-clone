@@ -4,13 +4,13 @@ import Form from '@/app/conversations/[conversationId]/components/Form';
 import Header from '@/app/conversations/[conversationId]/components/Header';
 import EmptyState from '@/components/EmptyState';
 
-type Props = {
+type Params = {
   conversationId: string;
 };
 
-const ConversationIdPage = async ({ conversationId }: Props) => {
-  const conversation = await getConversationById(conversationId);
-  const messages = await getMessages(conversationId);
+const ConversationIdPage = async ({ params }: { params: Params }) => {
+  const conversation = await getConversationById(params.conversationId);
+  const messages = await getMessages(params.conversationId);
 
   if (!conversation) {
     return (

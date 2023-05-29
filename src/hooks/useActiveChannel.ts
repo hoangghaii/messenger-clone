@@ -19,9 +19,8 @@ export const useActiveChannel = () => {
     channel.bind('pusher:subscription_succeeded', (members: Members) => {
       const initialMembers: string[] = [];
 
-      members.each((member: Record<string, any>) =>
-        initialMembers.push(member.id)
-      );
+      Object.keys(members.members).map((member) => initialMembers.push(member));
+
       set(initialMembers);
     });
 

@@ -16,7 +16,7 @@ type Props = {
   onClose: () => void;
 };
 
-const ConfirmModal: FC<Props> = ({ isOpen, onClose }: Props) => {
+const DeleteConversationModal: FC<Props> = ({ isOpen, onClose }: Props) => {
   const router = useRouter();
   const { conversationId } = useConversation();
   const [isLoading, setIsLoading] = useState(false);
@@ -71,4 +71,4 @@ const ConfirmModal: FC<Props> = ({ isOpen, onClose }: Props) => {
   );
 };
 
-export default ConfirmModal;
+export default DeleteConversationModal;

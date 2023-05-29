@@ -1,7 +1,7 @@
 import { cache } from 'react';
 
 import { getSession } from '@/actions';
-import { prisma } from '@/libs';
+import prisma from '@/libs/prismadb';
 
 export const getUsers = cache(async () => {
   try {

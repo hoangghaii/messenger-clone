@@ -43,11 +43,12 @@ const Form: FC = () => {
       <CldUploadButton
         options={{ maxFiles: 1 }}
         onUpload={handleUpload}
-        uploadPreset="pgc9ehd5"
+        uploadPreset="kes3jk7d"
       >
         <HiPhoto size={30} className="text-sky-500" />
       </CldUploadButton>
       <form
+        autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
         className="flex items-center gap-2 lg:gap-4 w-full"
       >

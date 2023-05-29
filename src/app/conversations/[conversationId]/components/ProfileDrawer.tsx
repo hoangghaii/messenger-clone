@@ -8,7 +8,7 @@ import { IoClose, IoTrash } from 'react-icons/io5';
 
 import Avatar from '@/components/Avatar';
 import AvatarGroup from '@/components/AvatarGroup';
-import ConfirmModal from '@/components/modals/ConfirmModal';
+import DeleteConversationModal from '@/components/modals/DeleteConversationModal';
 import { useActiveList, useOtherUser } from '@/hooks';
 
 type Props = {
@@ -44,7 +44,7 @@ const ProfileDrawer: FC<Props> = ({ isOpen, onClose, data }: Props) => {
 
   return (
     <>
-      <ConfirmModal
+      <DeleteConversationModal
         isOpen={confirmOpen}
         onClose={() => setConfirmOpen(false)}
       />
