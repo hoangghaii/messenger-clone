@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Using with MongoDB, @map() is used to map the field name or enum value 
+// from the Prisma schema to a column or document field with a 
+// different name in the database.
+
+// Using with MongoDB, @db is used to map the field name or enum value from the Prisma schema
+
 model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
   name           String?
